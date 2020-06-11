@@ -1,11 +1,11 @@
 <template>
   <div class="items-create">
     <el-table :data="tableData" :border="true">
-      <!-- <el-table-column prop="_id" label="ID"></el-table-column> -->
+      <el-table-column prop="_id" label="ID"></el-table-column>
       <el-table-column prop="name" label="名称"></el-table-column>
       <el-table-column prop="avatar" label="头像"></el-table-column>
       <el-table-column prop="categories" label="类型"></el-table-column>
-      <el-table-column prop="scores.difficult" label="难度"></el-table-column>
+      <!-- <el-table-column prop="scores.difficult" label="难度"></el-table-column>
       <el-table-column prop="scores.skill" label="技能"></el-table-column>
       <el-table-column prop="scores.aggression" label="攻击性"></el-table-column>
       <el-table-column prop="scores.survival" label="生存"></el-table-column>
@@ -15,11 +15,11 @@
       <el-table-column prop="upwindItems" label="Name"></el-table-column>
       <el-table-column prop="useSkill" label="Icon"></el-table-column>
       <el-table-column prop="combatSkill" label="ID"></el-table-column>
-      <el-table-column prop="warfareSkill" label="Name"></el-table-column>
+      <el-table-column prop="warfareSkill" label="Name"></el-table-column> -->
 
       <el-table-column>
         <template slot-scope="scope">
-          <el-button type="primary" @click="$router.push(`/items/edit/${scope.row._id}`)">编辑</el-button>
+          <el-button type="primary" @click="$router.push(`/heroes/edit/${scope.row._id}`)">编辑</el-button>
           <el-button type="danger" @click="deleteitem(scope.row._id)">删除</el-button>
         </template>
       </el-table-column>

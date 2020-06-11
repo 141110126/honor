@@ -1,5 +1,30 @@
 import Vue from 'vue'
-import {Button,Upload, Select,Option,Message,Container,Table,TableColumn, Header, Aside, Main, Menu,Submenu,MenuItemGroup, MenuItem,Form, FormItem,Input} from 'element-ui'
+import {
+    Button,
+    Upload,
+    Select,
+    Option,
+    Message,
+    Container,
+    Table,
+    TableColumn,
+    Header,
+    Aside,
+    Main,
+    Menu,
+    Submenu,
+    MenuItemGroup,
+    MenuItem,
+    Form,
+    FormItem,
+    Input,
+    Rate,
+    Tabs,
+    TabPane,
+    Card,
+    Row,
+    Col
+} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(Button)
@@ -19,6 +44,13 @@ Vue.use(TableColumn)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Upload)
+Vue.use(Rate)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
+
 
 
 

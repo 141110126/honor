@@ -26,11 +26,12 @@ const schema = mongoose.Schema({
     type:[{
       name: {type:String},
       img: {type:String},
-      description: {type:String}
+      description: {type:String},
+      tip: {type:String}
     }]
   },
   // 顺风出装
-  DownwindItems:{
+  downwindItems:{
     type:[{type:mongoose.SchemaTypes.ObjectId,ref:'Item'}]
   },
   // 逆风出装
