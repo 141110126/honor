@@ -58,6 +58,23 @@ Vue.use(VueRouter)
         path: '/heroes/list',
         name: 'HeroesList',
         component: () => import(/* webpackChunkName: "Items" */ '../views/HeroesList.vue')
+      },
+
+      {
+        path: '/articles/edit',
+        name: 'ArticlesEdit',
+        component: () => import(/* webpackChunkName: "Items" */ '../views/ArticlesEdit.vue')
+      },
+      {
+        path: '/articles/edit/:id',
+        props: true,
+        name: 'ArticlesEdit',
+        component: () => import(/* webpackChunkName: "Items" */ '../views/ArticlesEdit.vue')
+      },
+      {
+        path: '/articles/list',
+        name: 'ArticlesList',
+        component: () => import(/* webpackChunkName: "Items" */ '../views/ArticlesList.vue')
       }
     ]
   },

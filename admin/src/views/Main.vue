@@ -52,6 +52,24 @@
                 <span>英雄列表</span>
               </el-menu-item>
           </el-menu-item-group>
+
+          <!-- 文章 -->
+          <el-menu-item-group>
+              <template slot="title">
+                <i class="el-icon-email"></i>
+                <span>文章</span>
+              </template>
+              <el-menu-item index="/articles/edit">
+                <i class="el-icon-emailitems"></i>
+                <span>文章创建</span>
+              </el-menu-item>
+              <el-menu-item index="/articles/list">
+                <i class="el-icon-email"></i>
+                <span>文章列表</span>
+              </el-menu-item>
+          </el-menu-item-group>
+
+
         </el-submenu>
       </el-menu>
     </el-aside>
