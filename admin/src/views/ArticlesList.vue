@@ -3,7 +3,13 @@
     <el-table :data="tableData" :border="true">
       <el-table-column prop="_id" label="ID"></el-table-column>
       <el-table-column prop="title" label="标题"></el-table-column>
-      <el-table-column prop="categories" label="所属分类"></el-table-column>
+      <!-- <el-table-column prop="item in categories" label="所属分类">{{item.name}}</el-table-column> -->
+
+      <el-table-column prop="categories" label="所属分类">
+        <template slot-scope="scope">
+          <span v-for="item in scope.row.categories" :key="item._id">{{item.name}}、</span>
+        </template>
+      </el-table-column>
 
       <el-table-column>
         <template slot-scope="scope">

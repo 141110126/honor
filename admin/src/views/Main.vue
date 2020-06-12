@@ -69,6 +69,22 @@
               </el-menu-item>
           </el-menu-item-group>
 
+          <!-- 广告位 -->
+          <el-menu-item-group>
+              <template slot="title">
+                <i class="el-icon-email"></i>
+                <span>广告位</span>
+              </template>
+              <el-menu-item index="/ads/edit">
+                <i class="el-icon-emailitems"></i>
+                <span>广告位创建</span>
+              </el-menu-item>
+              <el-menu-item index="/ads/list">
+                <i class="el-icon-email"></i>
+                <span>广告位列表</span>
+              </el-menu-item>
+          </el-menu-item-group>
+
 
         </el-submenu>
       </el-menu>

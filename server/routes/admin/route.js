@@ -13,6 +13,7 @@ const getModel = (ctx,next) => {
 }
 // 创建分类
 router.post('/', async (ctx) => {
+  console.log(ctx.request.body);
   let CurrentModel = await getModel(ctx);
   let res = await CurrentModel.create(ctx.request.body)
   ctx.body = {
@@ -24,7 +25,7 @@ router.post('/', async (ctx) => {
 // 获取分类
 router.get('/', async(ctx) => {
   let CurrentModel = await getModel(ctx);
-  let res = await CurrentModel.find().populate('parent')//.limit(10);
+  let res = await CurrentModel.find().populate('parent').populate('categories') //.limit(10);
   ctx.body = {
     code: 200,
     status: '成功',

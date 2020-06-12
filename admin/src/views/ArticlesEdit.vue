@@ -10,7 +10,10 @@
       <el-form-item label="标题">
         <el-input type="text" v-model="model.title"></el-input>
       </el-form-item>
-      
+      <el-form-item>
+        <vue-editor id="editor" useCustomImageHandler @image-added="handleImageAdded" v-model="model.content"> </vue-editor>
+        <!-- <vue-editor v-model="model.content" useCustomImageHandler @imageAdded="handleImageAdded" /> -->
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
       </el-form-item>
@@ -21,11 +24,11 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-
+import { VueEditor } from 'vue2-editor'
 export default {
   name: 'CategoriesCreate',
   components: {
-    // HelloWorld
+    VueEditor
   },
   props: ['id'],
   data() {
@@ -44,6 +47,14 @@ export default {
     this.id && this.getArticle();
   },
   methods: {
+    // 
+    async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      var formData = new FormData();
+      formData.append("image", file);
+      let res = await this.$http.post('/upload',formData);
+      Editor.insertEmbed(cursorLocation, "image", res.data.url);
+      resetUploader();
+    },
     // 获取所有分类
     async getAllCategories() {
       let res = await this.$http.get('/rest/categories');
