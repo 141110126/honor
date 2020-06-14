@@ -16,7 +16,7 @@
             <el-form-item label="图片">
               <el-upload 
                 :action="`${$http.defaults.baseURL}/upload`"
-                :on-success="res=>item.img = res.url">
+                :on-success="res=>$set(item,'img',res.url)">
                 <img :src="item.img" class="uploader-img" v-if="item.img">
                 <i class="el-icon-plus uploader-icon" v-else></i>
               </el-upload>
@@ -53,18 +53,10 @@ export default {
     }
   },
   created(){
-    // 创建时
-    this.getAllAds();
     // 修改时
     this.id && this.getAds();
   },
   methods: {
-    // 获取所有分类
-    async getAllAds() {
-      let res = await this.$http.get('/rest/ads');
-      this.parentList = res.data.data
-    },
-
     // 获取当前分类
     async getAds() {
       let res = await this.$http.get(`/rest/ads/${this.id}`);

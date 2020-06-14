@@ -5,6 +5,11 @@ import Main from '../views/Main.vue'
 Vue.use(VueRouter)
 
   const routes = [
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
+    },
   {
     path: '/',
     name: 'Main',
@@ -90,6 +95,21 @@ Vue.use(VueRouter)
         path: '/ads/list',
         name: 'AdsList',
         component: () => import( /* webpackChunkName: "Items" */ '../views/AdsList.vue')
+      },
+
+      {
+        path: '/users/edit',
+        name: 'UsersEdit',
+        component: () => import( /* webpackChunkName: "Items" */ '../views/UsersEdit.vue')
+      }, {
+        path: '/users/edit/:id',
+        props: true,
+        name: 'UsersEdit',
+        component: () => import( /* webpackChunkName: "Items" */ '../views/UsersEdit.vue')
+      }, {
+        path: '/users/list',
+        name: 'UsersList',
+        component: () => import( /* webpackChunkName: "Items" */ '../views/UsersList.vue')
       },
     ]
   },

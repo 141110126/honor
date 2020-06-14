@@ -22,10 +22,26 @@ router.post('/', async (ctx) => {
     data: res
   };
 })
+// let authorizeMiddleware = async(ctx, next) => {
+//   // 获取请求头中的token
+//   console.log(ctx.request);
+  
+//   let token = ctx.request
+//   // 校验token
+
+//   // 查找user
+
+//   // 
+//   await next();
+// } 
 // 获取分类
-router.get('/', async(ctx) => {
+router.get('/',async(ctx,next) => {
+  console.log(121);
+
   let CurrentModel = await getModel(ctx);
   let res = await CurrentModel.find().populate('parent').populate('categories') //.limit(10);
+  console.log(123);
+  
   ctx.body = {
     code: 200,
     status: '成功',

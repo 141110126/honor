@@ -13,4 +13,4 @@ const schema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Category', schema); //model(集合名,模式实例)
+module.exports = mongoose.model('Ad', schema); //model(集合名,模式实例)

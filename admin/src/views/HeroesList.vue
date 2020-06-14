@@ -43,10 +43,10 @@ export default {
   },
   created() {
     console.log(this.tableData);
-    this.getItems()
+    this.getHeroes()
   },
   methods: {
-    async getItems() {
+    async getHeroes() {
       let res = await this.$http.get('/rest/heroes')
       console.log(res);
       if(res.data.code == 200) {

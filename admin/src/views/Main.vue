@@ -7,20 +7,7 @@
             <i class="el-icon-message"></i>
             <span>内容管理</span>
           </template>
-          <el-menu-item-group>
-              <template slot="title">
-                <i class="el-icon-email"></i>
-                <span>分类</span>
-              </template>
-              <el-menu-item index="/categories/edit">
-                <i class="el-icon-email"></i>
-                <span>分类创建</span>
-              </el-menu-item>
-              <el-menu-item index="/categories/list">
-                <i class="el-icon-email"></i>
-                <span>分类列表</span>
-              </el-menu-item>
-          </el-menu-item-group>
+          
           <!-- 物品 -->
           <el-menu-item-group>
               <template slot="title">
@@ -69,6 +56,15 @@
               </el-menu-item>
           </el-menu-item-group>
 
+          
+        </el-submenu>
+
+        <!-- 运营管理 -->
+        <el-submenu index="2">
+          <template slot="title">
+            <i class="el-icon-message"></i>
+            <span>运营管理</span>
+          </template>
           <!-- 广告位 -->
           <el-menu-item-group>
               <template slot="title">
@@ -84,9 +80,46 @@
                 <span>广告位列表</span>
               </el-menu-item>
           </el-menu-item-group>
-
-
         </el-submenu>
+
+        <!-- 系统管理 -->
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-message"></i>
+            <span>系统管理</span>
+          </template>
+          <!-- 分类 -->
+          <el-menu-item-group>
+              <template slot="title">
+                <i class="el-icon-email"></i>
+                <span>分类</span>
+              </template>
+              <el-menu-item index="/categories/edit">
+                <i class="el-icon-email"></i>
+                <span>分类创建</span>
+              </el-menu-item>
+              <el-menu-item index="/categories/list">
+                <i class="el-icon-email"></i>
+                <span>分类列表</span>
+              </el-menu-item>
+          </el-menu-item-group>
+          <!-- 管理员 -->
+          <el-menu-item-group>
+              <template slot="title">
+                <i class="el-icon-email"></i>
+                <span>管理员</span>
+              </template>
+              <el-menu-item index="/users/edit">
+                <i class="el-icon-email"></i>
+                <span>管理员创建</span>
+              </el-menu-item>
+              <el-menu-item index="/users/list">
+                <i class="el-icon-email"></i>
+                <span>管理员列表</span>
+              </el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+
       </el-menu>
     </el-aside>
     <el-container>
@@ -118,5 +151,8 @@ export default {
 }
 .el-menu {
     height: 100vh;
-  }
+}
+.el-submenu .el-menu-item {
+  min-width: 0;
+}
 </style>

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-
+const Category = require('./Category.js')
 const schema = mongoose.Schema({
   name: {type: String, required: true},
   avatar: {type: String},
   title: {type: String},
   // 类型
   categories: {
-    type: [{type: mongoose.SchemaTypes.ObjectId,ref:'Category'}]
+    type: [{type: mongoose.SchemaTypes.ObjectId,ref:Category}]
   },
   // 分数
   scores: {
