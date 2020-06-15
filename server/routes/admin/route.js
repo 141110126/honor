@@ -1,45 +1,23 @@
 const Router = require('koa-router');
 const router = new Router({prefix: '/admin/api/rest/:resource'}); 
 // const Category = require('../../models/Category.js');
-const getModel = (ctx,next) => {
-  let resource = ctx.params.resource;
-  console.log(resource);
-  
-  let modelName = require('inflection').classify(resource);
-  console.log(modelName);
-  
-  Model = require(`../../models/${modelName}.js`)
-  return Model;
-}
+const authorizeMiddleware = require('../../middleware/auth.js')
+const getModelMiddleware = require('../../middleware/getModel.js')
+
+
 // 创建分类
-router.post('/', async (ctx) => {
+router.post('/', authorizeMiddleware(), getModelMiddleware(), async (ctx) => {
   console.log(ctx.request.body);
-  let CurrentModel = await getModel(ctx);
-  let res = await CurrentModel.create(ctx.request.body)
+  let res = await ctx.Model.create(ctx.request.body)
   ctx.body = {
     code: 201,
     status: '成功',
     data: res
   };
 })
-// let authorizeMiddleware = async(ctx, next) => {
-//   // 获取请求头中的token
-//   console.log(ctx.request);
-  
-//   let token = ctx.request
-//   // 校验token
-
-//   // 查找user
-
-//   // 
-//   await next();
-// } 
 // 获取分类
-router.get('/',async(ctx,next) => {
-  console.log(121);
-
-  let CurrentModel = await getModel(ctx);
-  let res = await CurrentModel.find().populate('parent').populate('categories') //.limit(10);
+router.get('/', authorizeMiddleware(), getModelMiddleware(), async(ctx, next) => {
+  let res = await ctx.Model.find().populate('parent').populate('categories') //.limit(10);
   console.log(123);
   
   ctx.body = {
@@ -49,11 +27,8 @@ router.get('/',async(ctx,next) => {
   };
 })
 // 查找分类
-router.get('/:id', async(ctx) => {
-  console.log(1111);
-  
-  let CurrentModel = await getModel(ctx);
-  let res = await CurrentModel.findById(ctx.params.id);
+router.get('/:id', authorizeMiddleware(), getModelMiddleware(), async (ctx) => {
+  let res = await ctx.Model.findById(ctx.params.id);
   ctx.body = {
     code: 200,
     status: '成功',
@@ -61,9 +36,8 @@ router.get('/:id', async(ctx) => {
   };
 })
 // 修改分类
-router.put('/:id', async(ctx) => {
-  let CurrentModel = await getModel(ctx);
-  let res = await CurrentModel.findByIdAndUpdate(ctx.params.id, ctx.request.body);
+router.put('/:id', authorizeMiddleware(), getModelMiddleware(), async (ctx) => {
+  let res = await ctx.Model.findByIdAndUpdate(ctx.params.id, ctx.request.body);
   ctx.body = {
     code: 201,
     status: '成功',
@@ -71,9 +45,8 @@ router.put('/:id', async(ctx) => {
   };
 })
 // 删除分类
-router.delete('/:id', async(ctx) => {
-  let CurrentModel = await getModel(ctx);
-  await CurrentModel.findByIdAndDelete(ctx.params.id);
+router.delete('/:id', authorizeMiddleware(), getModelMiddleware(), async (ctx) => {
+  await ctx.Model.findByIdAndDelete(ctx.params.id);
   ctx.body = {
     code: 204,
     status: '成功',

@@ -23,24 +23,21 @@ var http = axios.create({
 // })
 
 
-// http.interceptors.request.use(
-//   config => {
-//     let token = localStorage.getItem('token')
-//     console.log(token);
-    
-//     if (token) {
-      
-//       config.headers['Authorization'] = 'Bearer ' + token
-//       console.log(config.headers);
-
-//     }
-//     return config
-//   },
-//   error => {
-//     console.log(error)
-//     Promise.reject(error)
-//   }
-// )
+http.interceptors.request.use(
+  config => {
+    let token = localStorage.getItem('token')
+    console.log(token);
+    if (token) {
+      config.headers['Authorization'] = 'Bearer ' + token
+      console.log(config.headers);
+    }
+    return config
+  },
+  error => {
+    console.log(error)
+    Promise.reject(error)
+  }
+)
 
 http.interceptors.response.use((res) =>{
   // 拦截器这边一定要返回获取到的数据，后面才能接收并使用这些数据

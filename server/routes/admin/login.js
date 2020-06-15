@@ -3,6 +3,7 @@ const Router = require('koa-router')
 const User = require('../../models/User');
 const Jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const secret = require('../../plugins/sercet.js')
 
 const router = new Router({prefix: '/admin/api/login'});
 router.post('/', async (ctx) => {
@@ -24,7 +25,7 @@ router.post('/', async (ctx) => {
   }
 
   // 返回token
-  let token = Jwt.sign({ id: currentUser._id }, 'aaa')
+  let token = Jwt.sign({ id: currentUser._id }, sercet)
   console.log(token);
   ctx.body = {token};
 })
