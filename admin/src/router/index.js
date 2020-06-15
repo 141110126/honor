@@ -8,6 +8,7 @@ Vue.use(VueRouter)
     {
       path: '/login',
       name: 'Login',
+      meta: {isPublic:true},
       component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
     },
   {
@@ -128,5 +129,12 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeEach((to,from,next) =>{
+  console.log(localStorage.token)
+  
+  if(!to.meta.isPublic && !localStorage.getItem('token')) {
+    next('/login')
+  }
+  next();
+})
 export default router
