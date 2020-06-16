@@ -1,27 +1,8 @@
 import axios from 'axios'
-// import Vue from 'vue'
+import Vue from 'vue'
 var http = axios.create({
   baseURL: 'http://localhost:3000/admin/api'
 })
-// http.interceptors.request.use(()=> {
-  // console.log(111111);
-
-  // console.log(config);
-  
-//   // let token = localStorage.getItem('token')
-//   // console.log(token);
-  
-//   // if(token) {
-//   //   console.log(1234)
-//   //   config.headers['Authorization'] = 'Bearer ' + token;
-//   // } else {
-//   //   Vue.$router.push('/login')
-//   // }
-// }, err => {
-//   console.log(err);
-  
-// })
-
 
 http.interceptors.request.use(
   config => {
@@ -44,10 +25,10 @@ http.interceptors.response.use((res) =>{
   return res;
 },(err) => {
   console.log(err)
-  // Vue.prototype.$message({
-  //   type: 'error',
-  //   message: err.response.data.message
-  // })
+  Vue.prototype.$message({
+    type: 'error',
+    message: err.response.data.message
+  })
   return Promise.reject(err)
 }) 
 // console.log(http.interceptors.response)

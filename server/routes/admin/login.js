@@ -25,7 +25,7 @@ router.post('/', async (ctx) => {
   }
 
   // 返回token
-  let token = Jwt.sign({ id: currentUser._id }, sercet)
+  let token = Jwt.sign({ id: currentUser._id }, secret)
   console.log(token);
   ctx.body = {token};
 })

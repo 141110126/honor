@@ -1,8 +1,10 @@
 const Router = require('koa-router')
 const path = require('path');
+const authorizeMiddleware = require('../../middleware/auth.js')
+const getModelMiddleware = require('../../middleware/getModel.js')
 
 const router = new Router({prefix: '/admin/api/upload'});
-router.post('/',(ctx) => {
+router.post('/', authorizeMiddleware(), (ctx) => {
   let file = null;
   if(ctx.request.files.file){
     file = ctx.request.files.file

@@ -5,6 +5,8 @@ module.exports = options => {
     const assert = require('http-assert');
 
     return async (ctx, next) => {
+        console.log(ctx.request.headers);
+        
         // 获取请求头中的token
         let token = ctx.request.headers.authorization.split(' ').pop()
         assert(token, 401,'无token');

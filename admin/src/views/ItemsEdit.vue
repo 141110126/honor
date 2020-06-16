@@ -8,7 +8,8 @@
       <el-form-item label="图标">
         <el-upload
           class="items-uploader"
-          :action="`${$http.defaults.baseURL}/upload`"
+          :action="uploadUrl"
+          :headers="getAuthHeader()"
           :show-file-list="false"
           :on-success="handleUploadSuccess">
           <img v-if="model.icon" :src="model.icon" class="items">
