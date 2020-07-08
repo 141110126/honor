@@ -3,9 +3,8 @@
 // const productionGzipExtensions = ['js', 'css'];
 // require("babel-polyfill");
 module.exports = {
-  // build: {
-    publicPath: './'
-  // }
+  // publicPath:'/'
+  
   // publicPath: './',//打包后的位置(如果不设置这个静态资源会报404)
   // publicPath: process.env.NODE_ENV === 'production' ? 'http://47.92.237.225:8080/dist' : './',
   // outputDir: 'dist',//打包后的目录名称
