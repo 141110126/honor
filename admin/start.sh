@@ -12,6 +12,6 @@ echo $(cd $(dirname $0); pwd)
 
 # 启动容器
 # docker run -d -p 8080:80 -v $PWD/dist:/usr/share/nginx/html nginx
-docker run -d -p 8080:80 -v $(cd $(dirname $0); pwd)/dist:/usr/share/nginx/html --name honor-admin nginx
+docker run -d --restart=on-failure:5 -p 8080:80 -v $(cd $(dirname $0); pwd)/dist:/usr/share/nginx/html --name honor-admin nginx
 
 # docker run -d --restart=on-failure:5 -p 8080:80 -v $PWD/dist:usr/share/nginx/html --name honor-admin nginx
