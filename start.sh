@@ -1,7 +1,6 @@
 # linux脚本文件
 # 拉取代码
 echo '开始执行start.sh'
-git pull
 
 cd admin
 
