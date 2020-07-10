@@ -4,8 +4,10 @@ echo '开始执行start.sh'
 
 cd admin
 
+npm i 
+
 # 打包
-./node_modules/.bin/vue-cli-service build
+npm run build
 
 # 删除容器
 docker rm -f honor-admin
